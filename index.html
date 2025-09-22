@@ -39,7 +39,13 @@
       /* ============ Layout ============ */
       .container{width:92%;max-width:1250px;margin:1.5rem auto;}
       .section-title{
-        margin:1rem 0;font-size:1.35rem;color:var(--accent);text-align:center;font-weight:800;text-transform:uppercase;
+        margin:1rem 0;
+        font-size:1.4rem;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:2px;
+        text-align:center;
+        color:var(--accent);   /* bright gold */
       }
 
       /* ============ Certificate ============ */
@@ -50,7 +56,24 @@
         cursor:pointer;animation:float 4s ease-in-out infinite;box-shadow:0 8px 20px var(--shadow);
       }
       .certified-badge:hover{animation:none;transform:scale(1.04);box-shadow:0 12px 28px var(--shadow);}
-      .certified-title{color:var(--accent);font-size:1.2rem;margin:.7rem 0 0;text-transform:uppercase;font-weight:800;letter-spacing:2px;}
+      .certified-title{
+        color:#c8a951;          /* softer muted gold */
+        font-size:1rem;         /* slightly smaller than main title */
+        font-weight:600;
+        letter-spacing:1.5px;
+        text-align:center;
+        margin-top:1.5rem;
+        margin-bottom:0.6rem;
+      }
+
+      /* divider under the certificate heading */
+      .section-divider{
+        border:none;
+        border-top:2px solid var(--accent); /* thin gold line */
+        width:120px;
+        margin:0.5rem auto 1rem;            /* centers line */
+      }
+
       .click-enlarge{color:var(--accent-2);font-size:.85rem;font-style:italic;margin-top:.45rem;animation:fadePulse 2s infinite;}
       @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
       @keyframes fadePulse{0%{opacity:.7}50%{opacity:1}100%{opacity:.7}}
@@ -62,21 +85,21 @@
       .close-modal:hover{color:var(--accent-2);}
 
       /* Heads-Up modal box (custom) */
-      .heads-up-box {
-        background: var(--panel);
-        color: var(--text);
-        max-width: 520px;
-        margin: auto;
-        padding: 2rem;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 8px 24px var(--shadow);
-        border: 2px solid var(--accent);
-        animation: fadeInUp .4s ease;
+      .heads-up-box{
+        background:var(--panel);
+        color:var(--text);
+        max-width:520px;
+        margin:auto;
+        padding:2rem;
+        border-radius:12px;
+        text-align:center;
+        box-shadow:0 8px 24px var(--shadow);
+        border:2px solid var(--accent);
+        animation:fadeInUp .4s ease;
       }
-      .heads-up-box h2 { color: var(--accent); margin-bottom: 1rem; font-size: 1.5rem; }
-      .heads-up-box p { font-size: 1rem; line-height: 1.55; color: var(--muted); }
-      @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+      .heads-up-box h2{color:var(--accent);margin-bottom:1rem;font-size:1.5rem;}
+      .heads-up-box p{font-size:1rem;line-height:1.55;color:var(--muted);}
+      @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
       /* ============ Game Grid ============ */
       .game-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:2.25rem;}
@@ -151,11 +174,12 @@
       <div class="certified-wrap">
         <div class="certified-badge" id="certificateBadge" role="button" tabindex="0" aria-label="Tap to enlarge certificate"></div>
         <p class="click-enlarge">(tap image to view full size)</p>
-        <h2 class="certified-title">Official Licensed Operators</h2>
+        <h2 class="certified-title">OFFICIAL LICENSED OPERATORS</h2>
       </div>
+      <hr class="section-divider">
 
       <!-- Section title -->
-      <h2 class="section-title">Featured Casino Platforms</h2>
+      <h2 class="section-title">FEATURED CASINO PLATFORMS</h2>
 
       <!-- ===== Games Grid ===== -->
       <section class="game-grid">
@@ -366,9 +390,11 @@
     <div class="social-tooltip fb-tip" style="bottom:45px;">Facebook Page</div>
 
     <!-- ===== Footer ===== -->
-     <!--<footer>
+    <!--
+    <footer>
       <p class="copyright">© 2025 Jose GameZone. All rights reserved.</p>
-    </footer> --> 
+    </footer>
+    -->
 
     <!-- ===== Scripts ===== -->
     <script>
