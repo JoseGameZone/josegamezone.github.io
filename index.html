@@ -163,10 +163,16 @@
       <div class="logo">Jose<span>&nbsp;GameZone</span></div>
     </header>
 
-    <!-- ===== Banner ===== -->
-    <div class="alert-banner">
-      IMPORTANT: If our Facebook page is ever down, we’ll post our latest contact links (Telegram, SMS/Text, etc.) here. Please bookmark this page.
-    </div>
+   <!-- OLD BANNER — keep for later
+<div class="alert-banner">
+  IMPORTANT: If our Facebook page is ever down, we’ll post our latest contact links (Telegram, SMS/Text, etc.) here. Please bookmark this page.
+</div>
+-->
+
+<!-- CURRENT SECURITY BANNER -->
+<div class="alert-banner">
+  🚨 SECURITY ALERT: Beware of fake accounts copying our name or photo and messaging you pretending to be us. Before sending money or account information, always verify through the Messenger conversation you have already used with us. If a new page or account contacts you, confirm it in your existing chat first.
+</div>
 
     <!-- ===== Main ===== -->
     <main class="container">
@@ -386,17 +392,32 @@
     </a>
     <div class="social-tooltip tg-tip" style="bottom:110px;">Telegram Channel</div>
 
-    <!-- Facebook (UPDATED LINK) -->
-     <!-- <a href="https://www.facebook.com/Jose......." -->
-      <!-- Facebook -->
+
+    
+    <!-- OLD FACEBOOK BUTTON — keep for later
 <a href="#" class="social-btn facebook-btn" aria-label="Facebook" title="Facebook">
-  <!-- Inline SVG (generic 'f' badge) -->
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <circle cx="12" cy="12" r="11" fill="#1877F2"/>
     <text x="12" y="16" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">f</text>
   </svg>
 </a>
 <div class="social-tooltip fb-tip" style="bottom:45px;">Facebook Page</div>
+-->
+
+<!-- CURRENT OFFICIAL FACEBOOK BUTTON -->
+<a href="https://www.facebook.com/JoseGaming.Official"
+   class="social-btn facebook-btn"
+   aria-label="Official Facebook Page"
+   title="Official Facebook Page"
+   target="_blank"
+   rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="11" fill="#1877F2"/>
+    <text x="12" y="16" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif">f</text>
+  </svg>
+</a>
+
+<div class="social-tooltip fb-tip" style="bottom:45px;">Official Facebook Page</div>
 
     <!-- ===== Footer ===== -->
     <!--
@@ -436,13 +457,25 @@
         const headsUpModal = document.getElementById("headsUpModal");
         const closeHeadsUp = document.getElementById("closeHeadsUp");
 
-        document.querySelectorAll('.social-btn').forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.preventDefault();
-            headsUpModal.style.display = "flex";
-            document.body.style.overflow = "hidden";
-          });
-        });
+        // OLD — keep for later
+/*
+document.querySelectorAll('.social-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    headsUpModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
+});
+*/
+
+// CURRENT — popup only for SMS and Telegram
+document.querySelectorAll('.sms-btn, .telegram-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    headsUpModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  });
+});
 
         closeHeadsUp.addEventListener('click', () => {
           headsUpModal.style.display = "none";
@@ -462,8 +495,7 @@
     
 
    <div class="container" style="margin-top:.5rem;margin-bottom:2rem;opacity:.9;">
-  <a href="https://josegamezone.github.io/" class="return-top">Return to top</a>
-</div>
+<a href="#" class="return-top">Return to top</a></div>
 
 <style>
   .return-top {
