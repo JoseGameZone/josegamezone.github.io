@@ -97,8 +97,19 @@
         border:2px solid var(--accent);
         animation:fadeInUp .4s ease;
       }
+      .heads-up-box{position:relative;}
       .heads-up-box h2{color:var(--accent);margin-bottom:1rem;font-size:1.5rem;}
       .heads-up-box p{font-size:1rem;line-height:1.55;color:var(--muted);}
+      .security-close{
+        position:absolute;top:10px;right:14px;border:0;background:transparent;color:#f1f1f1;
+        font-size:28px;font-weight:700;line-height:1;cursor:pointer;
+      }
+      .security-close:hover{color:var(--accent-2);}
+      .security-ok{
+        margin-top:1.4rem;padding:.7rem 1.5rem;border:0;border-radius:8px;
+        background:var(--accent);color:#111;font-weight:800;cursor:pointer;
+      }
+      .security-ok:hover{opacity:.9;}
       @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
       /* ============ Game Grid ============ */
@@ -163,16 +174,31 @@
       <div class="logo">Jose<span>&nbsp;GameZone</span></div>
     </header>
 
-   <!-- OLD BANNER — keep for later
-<div class="alert-banner">
-  IMPORTANT: If our Facebook page is ever down, we’ll post our latest contact links (Telegram, SMS/Text, etc.) here. Please bookmark/screenshot this page.
-</div>
--->
+    <!-- PREVIOUS SECURITY BANNER — keep for later
+    <div class="alert-banner">
+      🚨 SECURITY ALERT: Beware of fake accounts copying our name or photo and messaging you pretending to be us. Before sending money or account information, always verify through the Messenger conversation you have already used with us.
+    </div>
+    -->
 
-<!-- CURRENT SECURITY BANNER -->
-<div class="alert-banner">
-  🚨 SECURITY ALERT: Beware of fake accounts copying our name or photo and messaging you pretending to be us. Before sending money or account information, always verify through the Messenger conversation you have already used with us.
-</div>
+    <!-- CURRENT TOP BANNER -->
+    <div class="alert-banner">
+      IMPORTANT: If our Facebook page is ever unavailable, we’ll post our latest official contact links here. Please save this page.
+    </div>
+
+    <!-- ===== Security Alert Popup — shown once per browser session ===== -->
+    <div id="securityModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="securityTitle">
+      <div class="heads-up-box">
+        <button type="button" id="closeSecurity" class="security-close" aria-label="Close security notice">×</button>
+        <h2 id="securityTitle">🚨 Security Alert</h2>
+        <p>
+          Beware of fake accounts copying our name or photo and messaging you pretending to be us.
+          <br><br>
+          Before sending money or account information, always verify through the
+          <strong>Messenger conversation you have already used with us.</strong>
+        </p>
+        <button type="button" id="securityGotIt" class="security-ok">Got it</button>
+      </div>
+    </div>
 
     <!-- ===== Main ===== -->
     <main class="container">
@@ -361,33 +387,18 @@
     <!-- ===== Heads-Up Modal (shown when any social button is clicked) ===== -->
     <div id="headsUpModal" class="modal" role="dialog" aria-modal="true" aria-label="Heads-Up Notice">
       <span class="close-modal" id="closeHeadsUp" aria-label="Close">×</span>
-      
-      
-      
-      <!-- old one 
       <div class="heads-up-box">
-        <h2>Heads-Up</h2>
+        <h2>Stay Connected</h2>
         <p>
-          If our Facebook page ever go offline, don’t worry — we’ll share our official links 
-          (SMS/Text, Telegram, and more) right here. <br><br>
-          <strong>Please bookmark/screenshot this page</strong> so you always know where to find us.
+          If our Facebook page is unavailable, we’ll post our latest official contact links here:
+          <strong>Telegram, SMS/Text, and WhatsApp.</strong><br><br>
+          <strong>⭐ Save this page so you can always find us again.</strong><br>
+          Bookmark it in your browser or take a screenshot for quick reference.
         </p>
-      </div>-->
-
-<div class="heads-up-box">
-  <h2>Stay Connected</h2>
-  <p>
-    If our Facebook page is unavailable, we’ll post our latest official contact links here:
-    <strong>Telegram, SMS/Text, and WhatsApp.</strong><br><br>
-
-    <strong>⭐ Save this page so you can always find us again.</strong><br>
-    Bookmark it in your browser or take a screenshot for quick reference.
-  </p>
-</div>
-      
+      </div>
     </div>
 
-    <!-- ===== Social Buttons (3) — NO NAVIGATION: they open the Heads-Up modal ===== -->
+    <!-- ===== Social Buttons: SMS/Telegram open popup; Facebook opens official page ===== -->
     <!-- SMS/Text -->
     <a href="#" class="social-btn sms-btn" aria-label="Text Us" title="SMS / Text Us">
       <!-- Inline SVG (speech bubble) -->
@@ -473,25 +484,32 @@
         const headsUpModal = document.getElementById("headsUpModal");
         const closeHeadsUp = document.getElementById("closeHeadsUp");
 
-        // OLD — keep for later
-/*
-document.querySelectorAll('.social-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    headsUpModal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  });
-});
-*/
+        /* ===== Security alert — once per browser session ===== */
+        const securityModal = document.getElementById("securityModal");
+        const closeSecurity = document.getElementById("closeSecurity");
+        const securityGotIt = document.getElementById("securityGotIt");
 
-// CURRENT — popup only for SMS and Telegram
-document.querySelectorAll('.sms-btn, .telegram-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    headsUpModal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  });
-});
+        if (!sessionStorage.getItem("securityNoticeSeen")) {
+          securityModal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeSecurityNotice() {
+          securityModal.style.display = "none";
+          document.body.style.overflow = "auto";
+          sessionStorage.setItem("securityNoticeSeen", "1");
+        }
+
+        closeSecurity.addEventListener('click', closeSecurityNotice);
+        securityGotIt.addEventListener('click', closeSecurityNotice);
+
+        document.querySelectorAll('.sms-btn, .telegram-btn').forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            headsUpModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+          });
+        });
 
         closeHeadsUp.addEventListener('click', () => {
           headsUpModal.style.display = "none";
@@ -500,7 +518,9 @@ document.querySelectorAll('.sms-btn, .telegram-btn').forEach(btn => {
 
         // Click outside to close whichever modal is open
         window.addEventListener('click', (e) => {
-          if (e.target === certModal || e.target === headsUpModal) {
+          if (e.target === securityModal) {
+            closeSecurityNotice();
+          } else if (e.target === certModal || e.target === headsUpModal) {
             e.target.style.display = "none";
             document.body.style.overflow = "auto";
           }
@@ -511,7 +531,8 @@ document.querySelectorAll('.sms-btn, .telegram-btn').forEach(btn => {
     
 
    <div class="container" style="margin-top:.5rem;margin-bottom:2rem;opacity:.9;">
-<a href="#" class="return-top">Return to top</a></div>
+  <a href="#" class="return-top">Return to top</a>
+</div>
 
 <style>
   .return-top {
