@@ -112,6 +112,40 @@
       .security-ok:hover{opacity:.9;}
       @keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
+
+      /* ============ Compact Quick Game Access ============ */
+      html{scroll-behavior:smooth;}
+      .quick-access{margin:.2rem auto 1.15rem;text-align:center;}
+      .quick-access-title{
+        color:var(--accent);font-size:.9rem;font-weight:900;letter-spacing:1.15px;
+        text-transform:uppercase;margin-bottom:.25rem;text-shadow:0 1px 8px rgba(212,175,55,.16);
+      }
+      .quick-access-title::before{content:"⚡ ";color:var(--accent-2);}
+      .quick-access-note{color:var(--muted);font-size:.74rem;line-height:1.35;margin-bottom:.62rem;}
+      .quick-access-list{
+        display:flex;flex-wrap:wrap;justify-content:center;gap:.38rem;
+        max-width:900px;margin:0 auto;
+      }
+      .quick-game-link{
+        display:inline-flex;align-items:center;justify-content:center;
+        height:36px;padding:0 .72rem;border-radius:999px;
+        border:1px solid var(--accent);background:var(--panel);color:var(--text);
+        text-decoration:none;white-space:nowrap;font-size:.76rem;font-weight:800;line-height:1;
+        box-shadow:0 2px 7px rgba(0,0,0,.24);
+        transition:transform .18s ease,background .18s ease,color .18s ease,border-color .18s ease;
+        -webkit-tap-highlight-color:transparent;
+      }
+      .quick-game-link:hover,.quick-game-link:focus-visible{
+        background:var(--accent);border-color:var(--accent);color:#111;transform:translateY(-1px);outline:none;
+      }
+      .quick-game-link:active{transform:scale(.97);}
+      .game-card[id]{scroll-margin-top:14px;}
+      .game-card[id]:target{
+        outline:2px solid var(--accent);outline-offset:3px;
+        box-shadow:0 8px 26px rgba(212,175,55,.28);
+      }
+      @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
       /* ============ Game Grid ============ */
       .game-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:2.25rem;}
       @media (min-width:481px){.game-grid{grid-template-columns:repeat(2,1fr);}}
@@ -213,10 +247,34 @@
       <!-- Section title -->
       <h2 class="section-title">FEATURED CASINO PLATFORMS</h2>
 
+      <!-- ===== Compact Quick Game Access: jumps to the start of each existing game card ===== -->
+      <nav class="quick-access" aria-label="Quick Game Access">
+      <h3 class="quick-access-title">QUICK GAME ACCESS</h3>
+        <p class="quick-access-note">Tap a game below to jump right to it.</p>
+        <div class="quick-access-list">
+          <a class="quick-game-link" href="#game-fire-kirin">Fire Kirin</a>
+          <a class="quick-game-link" href="#game-juwa-777">Juwa 777</a>
+          <a class="quick-game-link" href="#game-juwa-20">Juwa 2.0</a>
+          <a class="quick-game-link" href="#game-game-vault">Game Vault</a>
+          <a class="quick-game-link" href="#game-milky-ways">Milky Ways</a>
+          <a class="quick-game-link" href="#game-orion-stars">Orion Stars</a>
+          <a class="quick-game-link" href="#game-yolo-777">YOLO 777</a>
+          <a class="quick-game-link" href="#game-ultra-panda">Ultra Panda</a>
+          <a class="quick-game-link" href="#game-vegas-sweeps">Vegas Sweeps</a>
+          <a class="quick-game-link" href="#game-cash-machine">Cash Machine</a>
+          <a class="quick-game-link" href="#game-gameroom">Gameroom</a>
+          <a class="quick-game-link" href="#game-vblink">Vblink</a>
+          <a class="quick-game-link" href="#game-mega-spin">Mega Spin</a>
+          <a class="quick-game-link" href="#game-joker-777">Joker 777</a>
+          <a class="quick-game-link" href="#game-panda-master">Panda Master</a>
+          <a class="quick-game-link" href="#game-cash-frenzy">Cash Frenzy</a>
+        </div>
+      </nav>
+
       <!-- ===== Games Grid ===== -->
       <section class="game-grid">
         <!-- Fire Kirin -->
-        <article class="game-card">
+        <article class="game-card" id="game-fire-kirin">
           <div class="game-image" style="background-image:url('https://imgur.com/J6fv9H9.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Fire Kirin</h3>
@@ -226,7 +284,7 @@
         </article>
 
         <!-- Juwa 777-->
-        <article class="game-card">
+        <article class="game-card" id="game-juwa-777">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4M6aWzkJ5ap9vZabV0_yvjmiChcvSiwzFfloMSvyM_if1lIqCVl7zLGn0hLDmxm0Oz3Yk45w2xAANYb2M3AFNDzx8pzvj8bsPzrF500zjMFgoJxsN1vtkPTyyWxX5h7laVbQbAKqsBC0MdJqZQSBSrxACynApy8H7BsQre2el9asajt9bfogJnFfQ/s320/JW.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Juwa 777</h3>
@@ -237,7 +295,7 @@
         
         
         <!-- Juwa 2.0 -->
-        <article class="game-card">
+        <article class="game-card" id="game-juwa-20">
           <div class="game-image" style="background-image:url('https://imgur.com/Nvz7dMr.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Juwa 2.0</h3>
@@ -247,7 +305,7 @@
         </article>
 
         <!-- Game Vault -->
-        <article class="game-card">
+        <article class="game-card" id="game-game-vault">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAzyIhxrFMHbegIRGcJurv7HzBdZGY4PnKiy5a8grJq_hrzdaCWbxzXRROnJNPj6doBeS8v3LNhboV0DJ654trjm3VZNtQb9470Scsc5Q3bcHtv2JC2exsqH8NwVsM8_t9lFtEMS_PUFEjcuy1eTj19xM5YgxRjt2xZNjcKdMDz-znqWjgiXIL8k8t/s320/gv.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Game Vault</h3>
@@ -257,7 +315,7 @@
         </article>
 
         <!-- Milky Ways -->
-        <article class="game-card">
+        <article class="game-card" id="game-milky-ways">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDVmcyTwE-xzz5FS0jL1kn4fW8r8FGB8BtK_CGO5oWiEvRDixENVjN_JQwl9okt18xapFEItxlkujWCDFbd1Q-2MxPzrxmXJ1eyaj4vdDGDUwDPuDIumMiFeS2xJR7Y1ShsE7KjGsQKJkN3fqO3fn07wVy82mTpIEQnv5iQ1IossVK6FP23l7Ys-g7/s320/MW.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Milky Ways</h3>
@@ -267,7 +325,7 @@
         </article>
 
         <!-- Orion Stars -->
-        <article class="game-card">
+        <article class="game-card" id="game-orion-stars">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhId9m4KXk_LsuJyn9lFGdb1NZf9zDS9q4wYXtUacNHBAjeAYbaB4VS8USAL5rSHr8HO-IbUnqCMVl3CLpSLuQihNpXvdGdZA4iKQrJISn86OzLqn9BuMzhkr71l7mpLKBTuVT_rfSfFZIdNA0WOMarjaFDIG6y-X2M8tVHVlNU4yIqUgeNrKKQixwI/s320/OS.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Orion Stars</h3>
@@ -277,7 +335,7 @@
         </article>
 
         <!-- YOLO 777 -->
-        <article class="game-card">
+        <article class="game-card" id="game-yolo-777">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZV37VJnKNTCJvHuB9eVoNtVfq0uZ8Wk-u5LbVwndwrVUna3McEaf8m-UeO0n_wDxSpnlQDVxjXfh-6L2moAxtu1bMzucqtcpMX9qLbUBN5ujqi8en8hFRivIHtCkgHC6S2Gs2oZZop7DBKz7iCpQUSz8lXbYfvJjUsJYF4wF-ME2lFun5vBG-z_et/s320/yolo.jpeg');"></div>
           <div class="game-info">
             <h3 class="game-title">YOLO 777</h3>
@@ -287,7 +345,7 @@
         </article>
 
         <!-- Ultra Panda -->
-        <article class="game-card">
+        <article class="game-card" id="game-ultra-panda">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1H_WMEA9H7VVhmqmn5vNOClnLOTIyeGL-tDEFgALdrhYMjotqfKE24_-pZ3QKcx8RTRTKikw7l7NLi0U4iaoYT7JbI2uz8ocjONLZehuyhqK5uQa-XzZ6Cl3Sv_fPRTSjavHnUYaEerAokE5ZI4HF6NAbeO772bYOZj5gcIjYQA5L2HS6R7oqUtTA/s320/UP.jpeg');"></div>
           <div class="game-info">
             <h3 class="game-title">Ultra Panda</h3>
@@ -297,7 +355,7 @@
         </article>
 
         <!-- Vegas Sweeps -->
-        <article class="game-card">
+        <article class="game-card" id="game-vegas-sweeps">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsKDLPjhYcOpjYX1zsx2edFy8p5BCpsAqIfFh82-YdRyv_II7-KhuJOAMhOKPrnLDWZoJ0KIx3MrJvm7lYJtTQvZa0Ay3_b3q8X0KxkLKwPVhajjIbWGEY5xIcHYUOW0oK36FrSsj-Hj2H29Mp_PqKBOOFTO2YUcdlR6UxbcAu121rC4wR6gCJS1Qw/s320/vs%20new.jpg');"></div>
           <div class="game-info">
             <h3 class="game-title">Vegas Sweeps</h3>
@@ -307,7 +365,7 @@
         </article>
 
         <!-- Cash Machine -->
-        <article class="game-card">
+        <article class="game-card" id="game-cash-machine">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFimoXTL2i3RL5A_zylOvy0t85VFhI1NAZDljEkT43OkkJ3YmoNN7c8tlIw_5QKdrH0oq9vSwkP8-boQM-R70QPzfP0O0b_dQ6f27z2ZRo4IAsnTZQST6_wEhzH_F0JuhbXzoDHVIz_FXit5dIaE0qqyWKvPjAT0DjaGSvRew1BKBR5hIvPy2q_sGI/s320/cm.webp');"></div>
           <div class="game-info">
             <h3 class="game-title">Cash Machine</h3>
@@ -317,7 +375,7 @@
         </article>
 
         <!-- Gameroom -->
-        <article class="game-card">
+        <article class="game-card" id="game-gameroom">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjFTSzOHFZZ2OhezYRz7hCp497oUVVJS0iPr1zSx5YNhXyioetr3JYU1HPfzzPh0QXud8sLvo6XCf04tptAHUriFjAzdxuNlu27hHRcAcOlNDd6VxqAKARSTRewtqeHHy0wNsSpLYWxVzDTr5s0gByloJddXJ9L2wPf2sX7aXoae0g1WJ0XVVHP-Rue/s320/GR.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Gameroom</h3>
@@ -327,7 +385,7 @@
         </article>
 
         <!-- VBLINK -->
-        <article class="game-card">
+        <article class="game-card" id="game-vblink">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj06D7RYn34mXblqP2u1EZuIPzavRKIiasuY_h29aVItQnewaXIvz9n7BiDvJTNIAfg7NESToPx_jVRO2jhCAthG4rKHu7hiWfpL_cs1rbRRejScNKpTE1t0PGPK1HjcyydNDGX8XbOvoRVzhcPDldwJiPW0856d2dxBsg7X8XwQF6yBKlZLoxZt1xn/s320/vb.jpeg');"></div>
           <div class="game-info">
             <h3 class="game-title">Vblink</h3>
@@ -337,7 +395,7 @@
         </article>
 
         <!-- Mega Spin -->
-        <article class="game-card">
+        <article class="game-card" id="game-mega-spin">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKV2RH4aTg193lqsvpTwz3J-3XDrTUm2cX6ahT_qQexcoelhYT7xww7mMx_NEjD3JOjo6xif9LUFCP-UnToTj2gfxH7URG7Gz-S6nPjk0kV8JHXiQEqMshA7fvQYHzSOsfobpS9ecKSIWirSh7GvAFRwyAZWGs3mBCaBkDZFYlOUuKZXnEMMI2kiXU43A/s1600/MEGA_FINAL.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Mega Spin</h3>
@@ -347,7 +405,7 @@
         </article>
 
         <!-- Joker 777 -->
-        <article class="game-card">
+        <article class="game-card" id="game-joker-777">
           <div class="game-image" style="background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiR5u3uv5b2dx8lw9tQUIQRahNHejRGMUIyEcDEIsgaQJImAC0I90yFIHDacm346vsXrqa-s4kFG8BsnTsIT-iIbsrhuTcXrWEheK7-MCpupj1TwCKQhFlWyHqADNceJvk-kXco0HqMbBv6DdphBqg0M7Fufeq-_yuRXaAbVTcTq5AiUDSxab9jCVnDIvA/s1600/joker777.png');"></div>
           <div class="game-info">
             <h3 class="game-title">Joker 777</h3>
@@ -357,7 +415,7 @@
         </article>
 
         <!-- Panda Master -->
-        <article class="game-card">
+        <article class="game-card" id="game-panda-master">
           <div class="game-image" style="background-image:url('https://imgs.search.brave.com/MaS2rDykuXoZJGoFmavtinT-aL_BHcky_MqeohiPa88/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzY5/ZDY2ZmRiOGUxMjhi/NDY0ODEwOGVkYS8z/MTNmZGM5Ny0yNzY2/LTRhN2ItYTU4MS0z/ZmQ5YTlmMDNmMmEv/UGFuZGFNYXN0ZXJM/b2dvLnBuZw');"></div>
           <div class="game-info">
             <h3 class="game-title">Panda Master</h3>
@@ -367,7 +425,7 @@
         </article>
 
         <!-- Cash Frenzy -->
-        <article class="game-card">
+        <article class="game-card" id="game-cash-frenzy">
           <div class="game-image" style="background-image:url('https://i.ytimg.com/vi/DaJ3qMax9yw/maxresdefault.jpg');"></div>
           <div class="game-info">
             <h3 class="game-title">Cash Frenzy</h3>
