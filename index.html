@@ -458,7 +458,7 @@
 
     <!-- ===== Social Buttons: SMS/Telegram open popup; Facebook opens official page ===== -->
     <!-- SMS/Text -->
-    <a href="#" class="social-btn sms-btn" aria-label="Text Us" title="SMS / Text Us">
+    <a href="sms:+19404657243" class="social-btn sms-btn" aria-label="Text Us" title="SMS / Text Us">
       <!-- Inline SVG (speech bubble) -->
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3" y="3" width="18" height="14" rx="3" ry="3" fill="#FFFFFF"/>
@@ -468,7 +468,7 @@
     <div class="social-tooltip sms-tip" style="bottom:175px;">SMS / Text Support</div>
 
     <!-- Telegram -->
-    <a href="#" class="social-btn telegram-btn" aria-label="Telegram" title="Telegram">
+    <a href="https://t.me/THEJOSE777" class="social-btn telegram-btn" aria-label="Telegram" title="Telegram">
       <!-- Inline SVG (paper plane) -->
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="12" cy="12" r="11" fill="#2AABEE"/>
@@ -561,13 +561,6 @@
         closeSecurity.addEventListener('click', closeSecurityNotice);
         securityGotIt.addEventListener('click', closeSecurityNotice);
 
-        document.querySelectorAll('.sms-btn, .telegram-btn').forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.preventDefault();
-            headsUpModal.style.display = "flex";
-            document.body.style.overflow = "hidden";
-          });
-        });
 
         closeHeadsUp.addEventListener('click', () => {
           headsUpModal.style.display = "none";
